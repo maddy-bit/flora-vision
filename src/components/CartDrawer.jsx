@@ -10,10 +10,10 @@ export default function CartDrawer({
   onRemoveItem,
   onCheckout
 }) {
-  // Parse prices and sum them
+  
   const calculateTotal = () => {
     return items.reduce((total, item) => {
-      // Remove 'Rs. ', '/-', and convert to number
+      
       const numericPrice = parseInt(item.plant.price.replace(/[^\d]/g, ''), 10);
       return total + numericPrice * item.quantity;
     }, 0);
@@ -41,7 +41,7 @@ export default function CartDrawer({
             className="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-[#0e1b10] border-l border-white/10 shadow-2xl flex flex-col"
             id="cart-drawer-panel"
           >
-            {/* Header */}
+            {/* header */}
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-emerald-400" />
@@ -56,7 +56,7 @@ export default function CartDrawer({
               </button>
             </div>
 
-            {/* Items List */}
+            {/* items list */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
@@ -84,7 +84,7 @@ export default function CartDrawer({
                       animate={{ opacity: 1, y: 0 }}
                       className="flex items-center gap-4 bg-[#142817]/60 p-3.5 rounded-2xl border border-white/5 hover:border-emerald-500/20 transition-all duration-300"
                     >
-                      {/* Product image */}
+                      {/*product image*/}
                       <div className="w-16 h-16 rounded-xl bg-emerald-950/40 border border-white/5 overflow-hidden flex items-center justify-center flex-shrink-0">
                         <img
                           src={item.plant.image}
@@ -94,7 +94,7 @@ export default function CartDrawer({
                         />
                       </div>
 
-                      {/* Product details */}
+                      {/*product details */}
                       <div className="flex-1 min-w-0">
                         <h4 className="font-display font-medium text-sm text-white truncate">
                           {item.plant.name}
@@ -103,7 +103,7 @@ export default function CartDrawer({
                           {item.plant.price}
                         </p>
                         
-                        {/* Quantity selector */}
+                        {/* qquantity selector */}
                         <div className="flex items-center gap-2.5 mt-2">
                           <button
                             onClick={() => onUpdateQuantity(item.plant.id, -1)}
@@ -123,7 +123,7 @@ export default function CartDrawer({
                         </div>
                       </div>
 
-                      {/* Remove button */}
+                      {/* remove button */}
                       <button
                         onClick={() => onRemoveItem(item.plant.id)}
                         className="p-2 text-gray-500 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all duration-300 cursor-pointer"

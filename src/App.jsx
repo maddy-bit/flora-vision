@@ -31,19 +31,19 @@ import {
 } from './data';
 
 export default function App() {
-  // Application State
+  // Application
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState(null);
   
-  // Plant lists & filter state
+  // Plant lists & filter
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [reviewsList, setReviewsList] = useState(REVIEWS);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   
-  // O2 Slideshow State
+  // O2 Slideshow
   const [o2Index, setO2Index] = useState(0);
 
   // Success message state for interactions
@@ -51,7 +51,7 @@ export default function App() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscribeEmail, setSubscribeEmail] = useState('');
 
-  // Cart Handlers
+  // Cart Handle
   const handleAddToCart = (plant) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.plant.id === plant.id);
@@ -63,7 +63,7 @@ export default function App() {
       return [...prev, { plant, quantity: 1 }];
     });
     
-    // Show toast notification
+    // notification
     showNotification(`Added ${plant.name} to your cart!`);
   };
 
@@ -90,7 +90,7 @@ export default function App() {
     showNotification("🎉 Checkout Successful! Thank you for ordering from FloraVision.");
   };
 
-  // Toast Notification system
+  // Notification system
   const showNotification = (msg) => {
     setNotification(msg);
     setTimeout(() => {
@@ -98,7 +98,7 @@ export default function App() {
     }, 4000);
   };
 
-  // Add customized reviews dynamically
+  // Add customized reviews
   const handleAddReview = (newReviewData) => {
     const freshReview = {
       ...newReviewData,
@@ -115,7 +115,7 @@ export default function App() {
     return ['All', ...Array.from(list)];
   }, []);
 
-  // Filtered Plants based on Category and Search Query
+  // filtered plants
   const filteredPlants = useMemo(() => {
     return TOP_SELLING_PLANTS.filter((plant) => {
       const matchesCategory = selectedCategory === 'All' || plant.category === selectedCategory;
@@ -194,7 +194,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Toast Notification Banner */}
+      {/* Notification Banner */}
       <AnimatePresence>
         {notification && (
           <motion.div
@@ -230,7 +230,7 @@ export default function App() {
 
         {/* BACKGROUND TOPIARY TREE WRAPPER */}
         <div className="relative">
-          {/* Centered Topiary Tree Background Image with subtle glowing backlight */}
+          {/* Centered Topiary Tree*/}
           <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-5xl aspect-square pointer-events-none z-0 overflow-visible opacity-80 select-none">
             <div className="absolute inset-12 bg-emerald-500/10 rounded-full blur-[120px]" />
             <img 
@@ -241,23 +241,23 @@ export default function App() {
             />
           </div>
 
-          {/* Foreground relative content container */}
+          {/* relative content container */}
           <div className="relative z-10 space-y-24 md:space-y-32">
             
             {/* HERO SECTION */}
             <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[75vh]" id="hero">
-              {/* Nature atmosphere lights */}
+              
               <div className="absolute top-0 right-1/4 w-96 h-96 nature-glow pointer-events-none -translate-y-1/3" />
               
-              {/* Left Column: Info & Badges */}
+              {/* Info & Badges */}
               <div className="lg:col-span-7 space-y-8 relative z-10">
-                {/* Tag / Badge */}
+                {/*Badge */}
                 <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-4 py-1.5 rounded-full tracking-wider uppercase">
                   <Sparkles className="w-3.5 h-3.5" />
                   Premium Botanicals
                 </div>
 
-                {/* Main Headline */}
+                
                 <div className="space-y-4">
                   <h1 className="font-display font-extrabold text-5xl sm:text-7xl text-white tracking-tight leading-[0.95]">
                     Earth’s Exhale
@@ -267,7 +267,7 @@ export default function App() {
                   </p>
                 </div>
 
-                {/* Action Buttons */}
+                {/*BUY NOW BUTTON */}
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <button 
                     onClick={() => {
@@ -280,7 +280,7 @@ export default function App() {
                   
                   <button 
                     onClick={() => {
-                      // Scroll to O2 demo video/slideshow block
+                      
                       document.getElementById('o2-section')?.scrollIntoView({ behavior: 'smooth' });
                       showNotification("🌱 Scrolling to the O2 Plant Live Demo section!");
                     }}
@@ -293,7 +293,7 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* Ronnie Hamill Floating Review Badge with Glassmorphism */}
+                
                 <div className="pt-6">
                   <div className="glass-panel p-5 rounded-[24px] border border-white/10 max-w-sm hover:border-emerald-500/30 transition-all duration-300 shadow-lg">
                     <div className="flex items-center gap-3.5 mb-2.5">
@@ -319,22 +319,22 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Right Column: Prominent aglaonema plant card */}
+              {/* aglaonema plant card */}
               <div className="lg:col-span-5 relative flex justify-center z-10 lg:pl-6">
                 <div className="relative group w-full max-w-[340px]">
                   
-                  {/* Backlight glow */}
+                  
                   <div className="absolute -inset-4 bg-emerald-500/10 rounded-[42px] blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500" />
                   
-                  {/* Custom Frame Wrapper with extreme backdrop-blur Glassmorphism */}
+                  
                   <div className="relative overflow-hidden glass-panel border border-white/12 rounded-[38px] p-6 text-center shadow-2xl transition-all duration-500 hover:translate-y-[-4px]">
                     
-                    {/* Floating Category */}
+                    
                     <span className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/10">
                       Indoor Plant
                     </span>
 
-                    {/* Main Product image */}
+                    {/*Product image */}
                     <div className="my-6 relative flex justify-center h-56 items-center">
                       <img 
                         src="/src/assets/images/aglaonema_plant_1782552273018.jpg" 
@@ -374,10 +374,10 @@ export default function App() {
             </section>
 
 
-            {/* OUR TRENDY PLANTS SECTION */}
+            {/* PLANTS SECTION */}
             <section className="space-y-12" id="trendy-plants">
               
-              {/* Header Title with decorative brackets */}
+              {/* Header Title*/}
               <div className="flex justify-center">
                 <div className="flex items-center gap-2 bg-emerald-950/40 border border-white/5 px-6 py-2 rounded-full backdrop-blur-md">
                   <span className="text-emerald-500 font-light text-2xl">[</span>
@@ -391,9 +391,9 @@ export default function App() {
               {/* Cards Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 
-                {/* Card 1: Left rounded */}
+                {/* Card 1*/}
                 <div className="trendy-card-left glass-panel border border-white/12 hover:border-emerald-500/30 p-8 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden group shadow-2xl transition-all duration-300">
-                  {/* Plant visual overflowing slightly on left/middle */}
+                 
                   <div className="w-48 h-48 md:w-56 md:h-56 relative flex justify-center items-center flex-shrink-0">
                     <div className="absolute inset-4 nature-glow rounded-full" />
                     <img 
@@ -404,7 +404,7 @@ export default function App() {
                     />
                   </div>
 
-                  {/* Text / Action details */}
+                  
                   <div className="flex-1 space-y-4 text-center md:text-left">
                     <h3 className="font-display font-semibold text-xl text-white">
                       {TRENDY_PLANTS[0].title}
@@ -419,7 +419,7 @@ export default function App() {
                     <div className="flex items-center justify-center md:justify-start gap-3">
                       <button 
                         onClick={() => {
-                          // Custom trendy plant mapping
+                          //trendy plant mapping
                           const item = {
                             id: TRENDY_PLANTS[0].id,
                             name: TRENDY_PLANTS[0].title,
@@ -455,9 +455,9 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Card 2: Right rounded */}
+                {/* Card 2*/}
                 <div className="trendy-card-right glass-panel border border-white/12 hover:border-emerald-500/30 p-8 flex flex-col md:flex-row-reverse items-center gap-6 relative overflow-hidden group shadow-2xl transition-all duration-300">
-                  {/* Plant visual overflowing slightly on right/middle */}
+                  
                   <div className="w-48 h-48 md:w-56 md:h-56 relative flex justify-center items-center flex-shrink-0">
                     <div className="absolute inset-4 nature-glow rounded-full" />
                     <img 
@@ -468,7 +468,7 @@ export default function App() {
                     />
                   </div>
 
-                  {/* Text / Action details */}
+                  {/* Text details */}
                   <div className="flex-1 space-y-4 text-center md:text-left">
                     <h3 className="font-display font-semibold text-xl text-white">
                       {TRENDY_PLANTS[1].title}
@@ -524,10 +524,10 @@ export default function App() {
           </div>
         </div>
 
-        {/* OUR TOP SELLING PLANTS */}
+        {/*TOP SELLING PLANTS */}
         <section className="space-y-12" id="top-selling">
           
-          {/* Header Title with decorative brackets & Category Filter */}
+          {/* Header*/}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/5 pb-6">
             <div className="flex items-center gap-2">
               <span className="text-emerald-500 font-light text-2xl">[</span>
@@ -556,7 +556,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Grid of 6 Plants */}
+          {/* Grid 6 Plants */}
           {filteredPlants.length === 0 ? (
             <div className="text-center py-16 space-y-4 bg-white/5 rounded-3xl p-8">
               <p className="text-gray-400 font-medium text-sm">No plants match your selected filter or search keyword.</p>
@@ -581,7 +581,7 @@ export default function App() {
                     animate={{ opacity: 1, y: 0 }}
                     className="arch-card-shape bg-[#122214] border border-white/5 hover:border-emerald-500/20 p-6 flex flex-col items-center justify-between text-center group shadow-xl transition-all duration-300 hover:translate-y-[-4px]"
                   >
-                    {/* Plant image inside background glow */}
+                    
                     <button 
                       onClick={() => setSelectedPlant(plant)}
                       className="w-full relative py-6 flex justify-center h-48 items-center cursor-pointer"
@@ -595,7 +595,7 @@ export default function App() {
                       />
                     </button>
 
-                    {/* Metadata & Actions */}
+                   
                     <div className="w-full space-y-4 mt-4">
                       <div className="space-y-1.5">
                         <button 
@@ -609,7 +609,7 @@ export default function App() {
                         </p>
                       </div>
 
-                      {/* Lower row: Price & add icon */}
+                      {/*Price,add icon */}
                       <div className="flex items-center justify-between border-t border-white/5 pt-4">
                         <span className="text-base font-display font-bold text-emerald-400">
                           {plant.price}
@@ -635,7 +635,7 @@ export default function App() {
         {/* CUSTOMER REVIEWS */}
         <section className="space-y-12" id="reviews-section">
           
-          {/* Header */}
+          {/* header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-white/5 pb-6">
             <div className="flex items-center gap-2">
               <span className="text-emerald-500 font-light text-2xl">[</span>
@@ -653,7 +653,7 @@ export default function App() {
             </button>
           </div>
 
-          {/* Reviews Grid */}
+          {/* Review Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
               {reviewsList.map((review) => {
@@ -667,7 +667,7 @@ export default function App() {
                     className="glass-panel p-6 rounded-[28px] border border-white/10 hover:border-emerald-500/20 shadow-xl flex flex-col justify-between group transition-all duration-300"
                   >
                     <div className="space-y-4">
-                      {/* Avatar & Name & Stars row */}
+                      {/* Avatar,Name,Stars row */}
                       <div className="flex items-center gap-3.5">
                         <img 
                           src={review.avatar} 
@@ -685,13 +685,13 @@ export default function App() {
                         </div>
                       </div>
 
-                      {/* Text */}
+                      
                       <p className="text-xs text-gray-300 leading-relaxed font-medium">
                         "{review.text}"
                       </p>
                     </div>
 
-                    {/* Accent nature leaf footer in card */}
+                    {/*leaf footer*/}
                     <div className="flex justify-end pt-4 mt-4 border-t border-white/5">
                       <Leaf className="w-4 h-4 text-emerald-500/20 group-hover:text-emerald-500/40 transition-colors" />
                     </div>
@@ -703,10 +703,10 @@ export default function App() {
         </section>
 
 
-        {/* OUR BEST O2 SECTION (INTERACTIVE CAROUSEL) */}
+        {/*O2 SECTION*/}
         <section className="space-y-12" id="o2-section">
           
-          {/* Header */}
+          {/* header */}
           <div className="flex justify-center">
             <div className="flex items-center gap-2">
               <span className="text-emerald-500 font-light text-2xl">[</span>
@@ -717,9 +717,9 @@ export default function App() {
             </div>
           </div>
 
-          {/* Giant Slide Card */}
+          {/* big slide card */}
           <div className="glass-panel rounded-[38px] p-8 md:p-12 border border-white/10 overflow-hidden relative shadow-2xl">
-            {/* Soft Ambient Light */}
+            
             <div className="absolute top-0 right-0 w-80 h-80 nature-glow pointer-events-none -translate-y-1/3" />
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
@@ -773,7 +773,7 @@ export default function App() {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Footer buttons / Controls row */}
+                {/* Footer buttons */}
                 <div className="flex flex-wrap items-center justify-between gap-6 border-t border-white/5 pt-6">
                   
                   {/* Explore button */}
@@ -787,7 +787,6 @@ export default function App() {
                     Explore
                   </button>
 
-                  {/* Slideshow arrows & counter */}
                   <div className="flex items-center gap-4 bg-white/5 border border-white/5 px-4 py-2 rounded-full">
                     <button 
                       onClick={() => {
@@ -820,7 +819,6 @@ export default function App() {
 
             </div>
 
-            {/* Pagination Bullet Dots Indicator */}
             <div className="flex justify-center gap-2 mt-8 border-t border-white/5 pt-4">
               {O2_PLANTS_SLIDES.map((_, idx) => (
                 <button
@@ -845,7 +843,7 @@ export default function App() {
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             
-            {/* Col 1: Brand & Desc */}
+            {/* Brand & Desc */}
             <div className="md:col-span-5 space-y-5">
               <div className="flex items-center gap-2">
                 <div className="bg-emerald-500/10 p-2 rounded-xl border border-emerald-500/20">
@@ -865,7 +863,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Col 2: Quick links */}
+            {/* Quick links */}
             <div className="md:col-span-3 space-y-4">
               <h4 className="text-xs font-extrabold uppercase tracking-widest text-white">Quick Link's</h4>
               <ul className="space-y-3.5 text-xs text-gray-400 font-medium">
@@ -886,7 +884,7 @@ export default function App() {
               </ul>
             </div>
 
-            {/* Col 3: Subscription newsletter */}
+            {/* Subscription newsletter */}
             <div className="md:col-span-4 space-y-4">
               <h4 className="text-xs font-extrabold uppercase tracking-widest text-white">For Every Update.</h4>
               
@@ -928,7 +926,6 @@ export default function App() {
       </footer>
 
 
-      {/* SIDE CART DRAWER OVERLAY */}
       <CartDrawer 
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -938,14 +935,13 @@ export default function App() {
         onCheckout={handleCheckout}
       />
 
-      {/* DETAILED PLANT INFO POPUP MODAL */}
+      \
       <PlantModal 
         plant={selectedPlant}
         onClose={() => setSelectedPlant(null)}
         onAddToCart={handleAddToCart}
       />
 
-      {/* ADD REVIEW MODAL */}
       <ReviewFormModal 
         isOpen={isReviewModalOpen}
         onClose={() => setIsReviewModalOpen(false)}

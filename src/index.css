@@ -6,7 +6,7 @@
   --font-display: 'Space Grotesk', sans-serif;
 }
 
-/* Custom background animations and styles to match the figma image */
+/* background animations */
 body {
   background-color: #0b140d; /* Very deep natural green/black */
   color: #f3f4f6;
@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom styles for matching the Figma card shapes precisely */
+/* Card Shapes */
 .arch-card-shape {
   border-radius: 120px 120px 24px 24px;
 }
@@ -42,7 +42,7 @@ body {
   background: #2e5735;
 }
 
-/* Soft ambient glows resembling nature filtering light */
+/* Soft ambient glows looks like nature filtering light */
 .nature-glow {
   background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(0,0,0,0) 70%);
 }

@@ -56,7 +56,7 @@ export default function ReviewFormModal({ isOpen, onClose, onSubmit }) {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name */}
+              
               <div className="space-y-1.5">
                 <label className="text-xs font-semibold text-gray-300 block">Your Name</label>
                 <input
