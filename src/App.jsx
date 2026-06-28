@@ -919,7 +919,7 @@ export default function App() {
           <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[10px] text-gray-500 font-medium">
             <span>FloraVision © all right reserve</span>
             <span className="flex items-center gap-1">
-              Made with <Heart className="w-3 h-3 text-rose-500 fill-current" /> in collaboration with AI Studio
+              Made with <Heart className="w-3 h-3 text-rose-500 fill-current" /> by Anmol Trivedi
             </span>
           </div>
 
